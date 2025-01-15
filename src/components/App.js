@@ -1,29 +1,46 @@
+// Import necessary modules
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-const App = () => {
+// Define Home component
+function Home() {
+  return (
+  <div>
+      <h1>Welcome to my website!</h1>
+      
+    </div>
+  );
+}
+
+// Define About component
+function About() {
+  return (
+    <div>
+      <h1>About</h1>
+      <p>This is simple React Router program.</p>
+    </div>
+  );
+}
+
+// Define App component
+function App() {
   return (
     <Router>
       <nav>
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
         </ul>
       </nav>
-
       <Switch>
-       <Route exact path="/" render={() => <Home />} />
-<Route path="/about" render={() => <About />} />
-
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
       </Switch>
     </Router>
   );
-};
+}
 
-export default App;
+// Render the application
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
